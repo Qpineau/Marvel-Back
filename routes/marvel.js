@@ -9,13 +9,13 @@ const privateKey = process.env.PRIVATE_KEY;
 
 router.get("/characters", async (req, res) => {
   try {
-    const skip = req.query.skip;
+    const offset = req.query.offset;
     const limit = req.query.limit || 100;
     const ts = uid2(12);
     const hash = md5(ts + privateKey + publicKey);
 
     const response = await axios.get(
-      `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&skip=${skip}`
+      `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}`
     );
     res.json(response.data);
   } catch (error) {
@@ -26,13 +26,13 @@ router.get("/characters", async (req, res) => {
 
 router.get("/comics", async (req, res) => {
   try {
-    const skip = req.query.skip;
+    const offset = req.query.offset;
     const limit = req.query.limit || 100;
     const ts = uid2(12);
     const hash = md5(ts + privateKey + publicKey);
 
     const response = await axios.get(
-      `http://gateway.marvel.com/v1/public/comics?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&skip=${skip}`
+      `http://gateway.marvel.com/v1/public/comics?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}`
     );
     res.json(response.data);
   } catch (error) {

@@ -11,12 +11,12 @@ router.get("/search-characters", async (req, res) => {
   try {
     const name = req.query.name;
     const limit = req.query.limit || 100;
-    const skip = req.query.skip;
+    const offset = req.query.offset;
     const hash = md5(ts + privateKey + publicKey);
     const ts = uid2(12);
 
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&skip=${skip}&name=${name}`
+      `https://lereacteur-marvel-api.herokuapp.com/characters?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}&name=${name}`
     );
 
     res.json(response.data);
@@ -30,12 +30,12 @@ router.get("/search-comics", async (req, res) => {
   try {
     const title = req.query.title;
     const limit = req.query.limit || 100;
-    const skip = req.query.skip;
+    const offset = req.query.offset;
     const hash = md5(ts + privateKey + publicKey);
     const ts = uid2(12);
 
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comics?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&skip=${skip}&title=${title}`
+      `https://lereacteur-marvel-api.herokuapp.com/comics?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}&title=${title}`
     );
 
     res.json(response.data);
