@@ -11,7 +11,7 @@ router.get("/characters", async (req, res) => {
   try {
     const offset = req.query.offset;
     const limit = req.query.limit || 100;
-    const ts = uid2(12);
+    const ts = req.query.ts;
     const hash = md5(ts + privateKey + publicKey);
 
     const response = await axios.get(
