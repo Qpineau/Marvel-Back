@@ -23,7 +23,7 @@ app.use(userRoutes);
 app.use(searchRoutes);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome on Marvel API" });
+  res.json({ message: "API is up and running" });
 });
 
 app.all("*", (req, res) => {
