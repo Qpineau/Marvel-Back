@@ -14,6 +14,9 @@ router.get("/characters", async (req, res) => {
     const ts = req.query.ts;
     const hash = md5(ts + privateKey + publicKey);
 
+    console.log(ts);
+    console.log(hash);
+
     const response = await axios.get(
       `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}`
     );
