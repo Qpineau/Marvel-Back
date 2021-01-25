@@ -53,7 +53,7 @@ router.get("/comics/:characterId", async (req, res) => {
     const response = await axios.get(
       `http://gateway.marvel.com/v1/public/characters/${characterId}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
     );
-    console.log(response.data);
+    console.log(response.data.data);
     res.json(response.data);
   } catch (error) {
     console.log("characterId/comics", error.message);
