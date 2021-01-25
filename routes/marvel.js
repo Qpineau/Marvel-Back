@@ -18,7 +18,7 @@ router.get("/characters", async (req, res) => {
     console.log(hash);
 
     const response = await axios.get(
-      `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}`
+      `http://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}`
     );
     res.json(response.data);
   } catch (error) {
@@ -35,7 +35,7 @@ router.get("/comics", async (req, res) => {
     const hash = md5(ts + privateKey + publicKey);
 
     const response = await axios.get(
-      `http://gateway.marvel.com/v1/public/comics?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}`
+      `http://gateway.marvel.com/v1/public/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}`
     );
     res.json(response.data);
   } catch (error) {
@@ -51,7 +51,7 @@ router.get("/comics/:characterId", async (req, res) => {
     const hash = md5(ts + privateKey + publicKey);
 
     const response = await axios.get(
-      `http://gateway.marvel.com/v1/public/comics/${characterId}?ts=${ts}&apiKey=${publicKey}&hash=${hash}`
+      `http://gateway.marvel.com/v1/public/comics/${characterId}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
     );
     res.json(response.data);
   } catch (error) {
@@ -71,7 +71,7 @@ router.post("/favorites", async (req, res) => {
       if (i === 0) {
         for (let j = 0; j < fav[i].length; j++) {
           const response = await axios.get(
-            `http://gateway.marvel.com/v1/public/character/${fav[i][j]}?ts=${ts}&apiKey=${publicKey}&hash=${hash}`
+            `http://gateway.marvel.com/v1/public/character/${fav[i][j]}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
           );
 
           favTab[0].push(response.data);
@@ -79,7 +79,7 @@ router.post("/favorites", async (req, res) => {
       } else {
         for (let j = 0; j < fav[i].length; j++) {
           const response = await axios.get(
-            `http://gateway.marvel.com/v1/public/comic/${fav[i][j]}?ts=${ts}&apiKey=${publicKey}&hash=${hash}`
+            `http://gateway.marvel.com/v1/public/comic/${fav[i][j]}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
           );
 
           favTab[1].push(response.data);

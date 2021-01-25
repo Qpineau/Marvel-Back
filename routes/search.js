@@ -16,7 +16,7 @@ router.get("/search-characters", async (req, res) => {
     const ts = uid2(12);
 
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}&name=${name}`
+      `https://lereacteur-marvel-api.herokuapp.com/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}&name=${name}`
     );
 
     res.json(response.data);
@@ -35,7 +35,7 @@ router.get("/search-comics", async (req, res) => {
     const ts = uid2(12);
 
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comics?ts=${ts}&apiKey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}&title=${title}`
+      `https://lereacteur-marvel-api.herokuapp.com/comics?ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=${limit}&offset=${offset}&title=${title}`
     );
 
     res.json(response.data);
