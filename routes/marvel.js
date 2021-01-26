@@ -3,9 +3,11 @@ const router = express.Router();
 const axios = require("axios");
 const uid2 = require("uid2");
 const md5 = require("md5");
+const cors = require("cors");
 
 const publicKey = process.env.PUBLIC_KEY;
 const privateKey = process.env.PRIVATE_KEY;
+router.use(cors());
 
 router.get("/characters", async (req, res) => {
   try {
@@ -72,7 +74,7 @@ router.post("/favorites", async (req, res) => {
       if (i === 0) {
         for (let j = 0; j < fav[i].length; j++) {
           const response = await axios.get(
-            `http://gateway.marvel.com/v1/public/character/${fav[i][j]}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+            `http://gateway.marvel.com/v1/public/characters/${fav[i][j]}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
           );
 
           favTab[0].push(response.data);
@@ -80,7 +82,7 @@ router.post("/favorites", async (req, res) => {
       } else {
         for (let j = 0; j < fav[i].length; j++) {
           const response = await axios.get(
-            `http://gateway.marvel.com/v1/public/comic/${fav[i][j]}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+            `http://gateway.marvel.com/v1/public/comics/${fav[i][j]}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
           );
 
           favTab[1].push(response.data);
