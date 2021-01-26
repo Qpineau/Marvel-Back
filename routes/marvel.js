@@ -77,7 +77,7 @@ router.post("/favorites", async (req, res) => {
             `http://gateway.marvel.com/v1/public/characters/${fav[i][j]}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
           );
 
-          favTab[0].push(response.data);
+          favTab[0].push(response.data.data);
         }
       } else {
         for (let j = 0; j < fav[i].length; j++) {
@@ -85,7 +85,7 @@ router.post("/favorites", async (req, res) => {
             `http://gateway.marvel.com/v1/public/comics/${fav[i][j]}?ts=${ts}&apikey=${publicKey}&hash=${hash}`
           );
 
-          favTab[1].push(response.data);
+          favTab[1].push(response.data.data);
         }
       }
     }
